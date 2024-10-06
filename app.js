@@ -1,26 +1,49 @@
 import React from "react";
 import ReactDom from "react-dom/client";
 
-const parent =React.createElement(
-    "div",
-    {id : "parent"},
-    [React.createElement(
-        "div",
-        {id : "child"} ,
-        [React.createElement('h1',{}, "this is namaste react"),React.createElement('h2',{}, "i am an h2  tag")]
-    ) ,React.createElement(
-        "div",
-        {id : "child2"} ,
-        [React.createElement('h1',{}, "i am an h1 tag"),React.createElement('h2',{}, "i am an h2  tag")]
-    ) ]
-    
+// React Element => object => HTMLelement(render)
+
+// creating using pure/core react
+
+// const heading = React.createElement("h1" , {id: "heading"}, "hello everyone");
+//  console.log(heading)
+
+// jsx is not html in js
+
+//creating using jsx
+
+// jsx => React.createElement => ReactElement - js(object)=> HTMLElement(render)
+// const heading = <h1 className="heading">namaste manjeet using jsx</h1>;
+
+// react component 2 types :-
+
+// 1.  class based components - old way
+// 2. functional based componenets - new way
+
+//functional based componenets:
+
+// const HeadingComponent = () =>(
+//     <h1 className="heading">namaste react functional component</h1>
+
+// );
+
+// const data = api.getData();
+
+const Title = () => (
+  <h1 className="head" tabIndex="5">
+    namaste React using jsx
+  </h1>
 );
 
+const HeadingComponent = () => (
+  <div className="container">
+    {Title()}
+    <Title />
+    <Title></Title>
+    <h1 className="heading">namaste react functional component</h1> ;
+  </div>
+);
 
+const root = ReactDom.createRoot(document.getElementById("root"));
 
-const root =ReactDom.createRoot(document.getElementById("root"));
-
-root.render(parent);
-
-
- 
+root.render(<HeadingComponent />);
