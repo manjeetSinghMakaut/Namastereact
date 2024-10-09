@@ -15,5 +15,12 @@
 - https
 
 
+# hooks:-
+
+(normal js utility functions)
+
+- useState()
+-useEffect()
+
   
 

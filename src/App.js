@@ -1,5 +1,60 @@
 import React from "react";
-import ReactDom from "react-dom/client";
+import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
+
+
+
+
+
+
+
+
+
+const AppLayout = () =>{
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<AppLayout />);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // React Element => object => HTMLelement(render)
 
@@ -29,21 +84,17 @@ import ReactDom from "react-dom/client";
 
 // const data = api.getData();
 
-const Title = () => (
-  <h1 className="head" tabIndex="5">
-    namaste React using jsx
-  </h1>
-);
+// const Title = () => (
+//   <h1 className="head" tabIndex="5">
+//     namaste React using jsx
+//   </h1>
+// );
 
-const HeadingComponent = () => (
-  <div className="container">
-    {Title()}
-    <Title />
-    <Title></Title>
-    <h1 className="heading">namaste react functional component</h1> ;
-  </div>
-);
-
-const root = ReactDom.createRoot(document.getElementById("root"));
-
-root.render(<HeadingComponent />);
+// const HeadingComponent = () => (
+//   <div className="container">
+//     {Title()}
+//     <Title />
+//     <Title></Title>
+//     <h1 className="heading">namaste react functional component</h1> ;
+//   </div>
+// );
