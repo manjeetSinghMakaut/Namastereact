@@ -9,9 +9,8 @@ const ResturantCard = (props) => {
     cuisines,
     avgRatingString,
     costForTwo,
-    sla:{ deliveryTime},
+    sla: { deliveryTime },
   } = resdata.info;
- 
 
   return (
     <div className="res-card">

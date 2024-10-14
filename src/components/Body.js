@@ -1,15 +1,15 @@
 import ResturantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 import { useState } from "react";
 import { useEffect } from "react";
+import Shimmer from "./Shimmer.js";
 
 const Body = () => {
   //  - super powerful variable
 
   const [listOfResturants, setlistOfResturants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-
-  console.log(listOfResturants);
+  console.log("body rendering");
 
   useEffect(() => {
     fetchData();
@@ -24,31 +24,55 @@ const Body = () => {
 
     console.log(json);
 
-    
-
-    setlistOfResturants(json.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants);
-
-  
-    
+    // optional chaining
+    setlistOfResturants(
+      json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
-  return (
-    
+  // conditional rendering -this will be shown until our api not responded
+
+  return listOfResturants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
-        <button
-          className="filter-btn"
-          onClick={() => {
-            //filter logic here
-
-            const filteredList = listOfResturants.filter(
-              (res) => res.info.avgRatingString > 4.6
-            );
-            setlistOfResturants(filteredList);
-          }}
-        >
-          Top Rated Resturant
-        </button>
+        <div className="search">
+          <input
+            type="text"
+            className="searchbox"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="searchbutton"
+            onClick={() => {
+              //filter the resturant cards and update the ui
+              // searchtextconsole.log(searchText)
+             const filteredResturant= listOfResturants.filter((res) =>{
+              return  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              })
+              setlistOfResturants(filteredResturant)  
+            }}
+          > 
+            Search
+          </button>
+          <button
+            className="filter-btn"
+            onClick={() => {
+              //filter logic here
+              const filteredList = listOfResturants.filter(
+                (res) => res.info.avgRatingString > 3
+              );
+              setlistOfResturants(filteredList);
+            }}
+          >
+            Top Rated Resturant
+          </button>
+        </div>
       </div>
 
       <div className="res-container">
