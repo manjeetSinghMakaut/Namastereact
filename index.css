@@ -1,3 +1,7 @@
+:root{
+  font-family: initial;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

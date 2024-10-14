@@ -8,8 +8,10 @@ const Body = () => {
 
   const [listOfResturants, setlistOfResturants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [filteredRestaurant,setFilteredRestaurant] =useState([]);
 
-  console.log("body rendering");
+  console.log(searchText);
+  
 
   useEffect(() => {
     fetchData();
@@ -25,10 +27,10 @@ const Body = () => {
     console.log(json);
 
     // optional chaining
-    setlistOfResturants(
-      json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    setlistOfResturants(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+
+
   };
 
   // conditional rendering -this will be shown until our api not responded
@@ -55,7 +57,7 @@ const Body = () => {
              const filteredResturant= listOfResturants.filter((res) =>{
               return  res.info.name.toLowerCase().includes(searchText.toLowerCase())
               })
-              setlistOfResturants(filteredResturant)  
+             setFilteredRestaurant(filteredResturant)  
             }}
           > 
             Search
@@ -65,9 +67,9 @@ const Body = () => {
             onClick={() => {
               //filter logic here
               const filteredList = listOfResturants.filter(
-                (res) => res.info.avgRatingString > 3
+                (res) => res.info.avgRatingString > 4
               );
-              setlistOfResturants(filteredList);
+              setFilteredRestaurant(filteredList);
             }}
           >
             Top Rated Resturant
@@ -76,7 +78,7 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {listOfResturants.map((restaurant, index) => (
+        {filteredRestaurant.map((restaurant, index) => (
           <ResturantCard key={index} resdata={restaurant} />
         ))}
       </div>
