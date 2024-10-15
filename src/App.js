@@ -2,16 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About.js";
 
-
-
-
-
-
-
-
-
-const AppLayout = () =>{
+const AppLayout = () => {
   return (
     <div className="app">
       <Header />
@@ -20,9 +14,26 @@ const AppLayout = () =>{
   );
 };
 
+
+const appRouter = createBrowserRouter([
+  
+    
+      {
+        path: "/",
+        element: <AppLayout/>,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      }
+    
+
+]);
+
+// Root render
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
 
 
 
@@ -42,59 +53,3 @@ root.render(<AppLayout />);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// React Element => object => HTMLelement(render)
-
-// creating using pure/core react
-
-// const heading = React.createElement("h1" , {id: "heading"}, "hello everyone");
-//  console.log(heading)
-
-// jsx is not html in js
-
-//creating using jsx
-
-// jsx => React.createElement => ReactElement - js(object)=> HTMLElement(render)
-// const heading = <h1 className="heading">namaste manjeet using jsx</h1>;
-
-// react component 2 types :-
-
-// 1.  class based components - old way
-// 2. functional based componenets - new way
-
-//functional based componenets:
-
-// const HeadingComponent = () =>(
-//     <h1 className="heading">namaste react functional component</h1>
-
-// );
-
-// const data = api.getData();
-
-// const Title = () => (
-//   <h1 className="head" tabIndex="5">
-//     namaste React using jsx
-//   </h1>
-// );
-
-// const HeadingComponent = () => (
-//   <div className="container">
-//     {Title()}
-//     <Title />
-//     <Title></Title>
-//     <h1 className="heading">namaste react functional component</h1> ;
-//   </div>
-// );
