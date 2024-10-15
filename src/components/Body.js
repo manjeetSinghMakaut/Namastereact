@@ -8,10 +8,9 @@ const Body = () => {
 
   const [listOfResturants, setlistOfResturants] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurant,setFilteredRestaurant] =useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   console.log(searchText);
-  
 
   useEffect(() => {
     fetchData();
@@ -25,12 +24,19 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json);
+    console.log(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+      ?.restaurants);
+    
 
     // optional chaining
-    setlistOfResturants(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurant(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-
-
+    setlistOfResturants(
+      json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setFilteredRestaurant(
+      json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
   // conditional rendering -this will be shown until our api not responded
@@ -54,10 +60,12 @@ const Body = () => {
             onClick={() => {
               //filter the resturant cards and update the ui
               // searchtextconsole.log(searchText)
-             const filteredResturant= listOfResturants.filter((res) =>{
-              return  res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              })
-             setFilteredRestaurant(filteredResturant)  
+              const filteredResturant = listOfResturants.filter((res) => {
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
+              });
+              setFilteredRestaurant(filteredResturant);
             }}
           > 
             Search
@@ -67,7 +75,7 @@ const Body = () => {
             onClick={() => {
               //filter logic here
               const filteredList = listOfResturants.filter(
-                (res) => res.info.avgRatingString > 4
+                (res) => res.info.avgRatingString > 4.5
               );
               setFilteredRestaurant(filteredList);
             }}
@@ -78,8 +86,8 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {filteredRestaurant.map((restaurant, index) => (
-          <ResturantCard key={index} resdata={restaurant} />
+        {filteredRestaurant.map((restaurant) => (
+          <ResturantCard key={restaurant.info.id} resdata={restaurant} />
         ))}
       </div>
     </div>
