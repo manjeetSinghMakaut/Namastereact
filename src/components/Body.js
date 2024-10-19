@@ -24,23 +24,26 @@ const Body = () => {
     const json = await data.json();
 
  
-    console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     // optional chaining
     setlistOfResturants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     ); 
   };
+
+  
+  
 
   // conditional rendering -this will be shown until our api not responded
 
   return listOfResturants.length === 0 ? (
     <Shimmer />
   ) :
- (
+(
     <div className="body">
       <div className="filter">
         <div className="search">

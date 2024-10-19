@@ -134,3 +134,84 @@ h3 {
   width: 700px;
   height: 50px;
 }
+
+.SmallCard-container{
+  width: 749px;
+  height: 207px;
+  padding-left: 53px;
+}
+
+
+.Border-line{
+  border-bottom: .5px solid #d3d3d3;
+  height: .5px;
+  margin: 20px 0;
+}
+
+
+.menu{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pic{
+  height: 150px;
+  width: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.semi-SmallCard-container{
+  padding-top: 4px;
+  padding-bottom: 4px;  
+  height: 177px;
+  width: 766px;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.major-details{
+  width: 560px;
+}
+
+.inner-SmallCard-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.SmallCard-container .semi-SmallCard-container .inner-SmallCard-container .major-details .name-price-div p {
+  font-family: Gilroy;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 19px;
+    letter-spacing: -0.3px;
+    color: rgba(2, 6, 12, 0.6);
+    font-family: math;
+    margin:0px;
+}
+
+.SmallCard-container .semi-SmallCard-container .inner-SmallCard-container .major-details .name-price-div h4 {
+ 
+  font-family: math;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color: rgba(2, 6, 12, 0.75);
+}
+
+.SmallCard-container .semi-SmallCard-container .inner-SmallCard-container .major-details .description p {
+
+  font-size: 18px;
+  color: #a5a5a5;
+
+}
+
+
+.white-box-line{
+  background-color: #cfcaca;
+  width: 800px;
+  height: 15px;
+}
