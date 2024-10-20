@@ -29,8 +29,11 @@
   padding: 10px;
   margin: 0 10px;
   list-style-type: none;
-  cursor: pointer;
+  cursor: pointer; 
 }
+
+
+
 
 .res-card {
   width: 170px;
@@ -222,3 +225,7 @@ h3 {
   text-decoration: none; /* Remove underline */
 }
 
+.user-card{
+  padding: 10px;
+  border: 1px solid black;
+}
