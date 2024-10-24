@@ -1,34 +1,41 @@
 import React from "react";
+import User from "./User";
 
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      count: 0
-     
+      Userinfo: {
+        name: "dummy name",
+        location: "default"
+      },
     };
+    //console.log("child constructor");
+  }
+
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/manjeetSinghMakaut");
+    const json = await data.json();
+
+    console.log(json);
+
+    this.setState({
+      Userinfo: json,
+    });
   }
 
   render() {
-    const { name, location, contact } = this.props;
-    const {count} =this.state
+    const { name, login, created_at,avatar_url } = this.state.Userinfo;
+
+    //console.log(" child render");
+
     return (
       <div className="user-card">
-        <h1>count:{count}</h1>
-        <button  onClick={()=>{
-            // never update state variable directly
-
-           this.setState(
-            {
-                count: this.state.count+1
-            }
-           )
-
-        }}>count increment</button>
+        <img src={avatar_url}/>
         <h2>{name}</h2>
-        <h3>{location}</h3>
-        <h4> {contact}</h4>
+        <h3>{login}</h3>
+        <h4> {created_at}</h4>
       </div>
     );
   }

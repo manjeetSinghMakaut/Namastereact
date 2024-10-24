@@ -1,10 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const User = (props) => {
   const { name, location, contact } = props;
-     const [count,setCount]=useState(0)
-     const [count2,setCount2]=useState(1)
+  const [count, setCount] = useState(0);
+  const [count2, setCount2] = useState(1);
+
+  // useEffect(() => {
+  //   //API CALL
+  //   getuserInfo();
+  // }, []);
+
+  // console.log(User);
+  // async function getuserInfo() {
+  //   const data = await fetch("https://api.github.com/users/manjeetSinghMakaut");
+  //   const User = await data.json();
+
+  //   console.log(User);
+  // }
+
   return (
     <div className="user-card">
       <h1>count={count}</h1>
