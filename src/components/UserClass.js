@@ -8,10 +8,12 @@ class UserClass extends React.Component {
     this.state = {
       Userinfo: {
         name: "dummy name",
-        location: "default"
+        login: "default",
+        created_at: "nahi batunga"
+
       },
     };
-    //console.log("child constructor");
+    // console.log("child constructor");
   }
 
   async componentDidMount() {
@@ -21,14 +23,24 @@ class UserClass extends React.Component {
     console.log(json);
 
     this.setState({
-      Userinfo: json,
+      Userinfo: json
     });
   }
 
+ componentDidUpdate(){
+  console.log("componentdidupdate");
+  
+ }
+componentWillUnmount(){
+  console.log("component will unmount");
+  
+}
   render() {
     const { name, login, created_at,avatar_url } = this.state.Userinfo;
 
-    //console.log(" child render");
+    //  debugger
+
+  //  console.log(" child render");
 
     return (
       <div className="user-card">
