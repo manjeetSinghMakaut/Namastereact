@@ -24,7 +24,7 @@ class UserClass extends React.Component {
 
     this.setState({
       Userinfo: json
-    });
+    }); 
   }
 
  componentDidUpdate(){
