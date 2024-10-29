@@ -1,30 +1,11 @@
-import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import RestaurantSmallCard from "./RestaurantSmallCard.js";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants.js";
-
+import useRestrauntMenu from "../utils/useRestrauntMenu.js";
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
+  const { resId } = useParams();
 
-  const { resId } = useParams(); 
-
-
-
-  useEffect(() => {
-    FetchMenu();
-  }, []);
-
-  const FetchMenu = async () => {
-    const data = await fetch(MENU_API + resId);
-
-    
-    const json = await data.json();
-    setResInfo(json.data);
-  };
-
-  console.log(resInfo);
-  
+  const resInfo = useRestrauntMenu(resId);// PICKING UP THE DATA THEN USING BY DESTRUCTURING....
 
   if (resInfo === null) return <Shimmer />;
 
@@ -34,12 +15,10 @@ const RestaurantMenu = () => {
     costForTwoMessage,
     areaName,
     sla: { slaString },
-  } =resInfo?.cards?.[2]?.card?.card?.info;
+  } = resInfo?.cards[2]?.card?.card?.info;
 
-  const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card.card
-
-  ;
-  ;
+  const { itemCards } =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card.card;
 
   console.log(itemCards);
 

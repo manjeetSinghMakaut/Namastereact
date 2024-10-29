@@ -11,8 +11,6 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
-
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -24,28 +22,22 @@ const Body = () => {
 
     const json = await data.json();
 
- 
-  
-
     // optional chaining
     setlistOfResturants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    ); 
+    );
   };
 
   console.log(filteredRestaurant);
-  
-  
 
   // conditional rendering -this will be shown until our api not responded
 
   return listOfResturants.length === 0 ? (
     <Shimmer />
-  ) :
-(
+  ) : (
     <div className="body">
       <div className="filter">
         <div className="search">
@@ -89,7 +81,12 @@ const Body = () => {
 
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <Link  key={restaurant.info.id}  to={"/restaurants/"+ restaurant.info.id}><ResturantCard resdata={restaurant} /></Link>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <ResturantCard resdata={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
