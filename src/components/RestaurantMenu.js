@@ -5,7 +5,7 @@ import useRestrauntMenu from "../utils/useRestrauntMenu.js";
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
-  const resInfo = useRestrauntMenu(resId);// PICKING UP THE DATA THEN USING BY DESTRUCTURING....
+  const resInfo = useRestrauntMenu(resId); // PICKING UP THE DATA THEN USING BY DESTRUCTURING....
 
   if (resInfo === null) return <Shimmer />;
 

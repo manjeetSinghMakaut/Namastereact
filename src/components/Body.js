@@ -1,37 +1,27 @@
 import ResturantCard from "./RestaurantCard";
-import { useState } from "react";
-import { useEffect } from "react";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus.js";
+import useBodyCards from "../utils/useBodyCards.js";
+import OfflineComponent from "./OfflineComponent.js";
 const Body = () => {
   //  - super powerful variable
 
-  const [listOfResturants, setlistOfResturants] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const BodyCards = useBodyCards();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6452765&lng=88.46127489999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const json = await data.json();
-
-    // optional chaining
-    setlistOfResturants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  const {
+    listOfResturants,
+    filteredRestaurant,
+    searchText,
+    setFilteredRestaurant,
+    setSearchText,
+  } = BodyCards;
 
   console.log(filteredRestaurant);
+  const OnlineStatus = useOnlineStatus();
+
+  if (OnlineStatus === false)
+    return <OfflineComponent/>
 
   // conditional rendering -this will be shown until our api not responded
 
