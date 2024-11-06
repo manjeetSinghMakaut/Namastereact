@@ -7,7 +7,10 @@ import About from "./components/About.js";
 import ContactUs from "./components/ContactUs.js";
 import Error from "./components/Error.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
-
+import Grocery from "./components/Grocery.js";
+// chunking
+// code splitting
+//dynamic bundling
 
 const AppLayout = () => {
   return (
@@ -21,7 +24,7 @@ const AppLayout = () => {
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />, 
+    element: <AppLayout />,
     children: [
       {
         path: "/",
@@ -32,13 +35,18 @@ const appRouter = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/ContactUs", 
+        path: "/ContactUs",
         element: <ContactUs />,
       },
       {
+        path: "/grocery",
+        element: <Grocery/>, 
+        
+      },
+      {
         path: "/restaurants/:resId",
-        element: <RestaurantMenu/>
-      }
+        element: <RestaurantMenu />,
+      },
     ],
     errorElement: <Error />,
   },
