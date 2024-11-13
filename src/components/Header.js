@@ -15,24 +15,24 @@ const Header = () => {
   },[btnNameReact])
 
   return (
-    <div className="header">
-      <div className="logo-conatiner">
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex justify-between border border-black items-center h-[100px] overflow-hidden font-serif"> 
+      <div className="w-[150px] h-[110px] overflow-hidden">
+        <img className="w-full h-full object-contain cursor-pointer" src={LOGO_URL} />
       </div>
-      <div className="Nav-Items">
-        <ul>
+      <div className="p-x-5 flex items-center">
+        <ul className="flex p-3 m-4 gap-7">
           
-          <li className="nav-item"><Link to={"/"}>Home</Link></li>
-          <li className="nav-item"><Link to="/about">About</Link></li>
-          <li className="nav-item"> <Link to="/ContactUs">ContactUs</Link></li>
-          <li className="nav-item"> <Link to="/grocery">Grocery</Link></li>
+          <li className=" hover:text-blue-700"><Link to={"/"}>Home</Link></li>
+          <li className=" hover:text-blue-700"><Link to="/about">About</Link></li>
+          <li className=" hover:text-blue-700"> <Link to="/ContactUs">ContactUs</Link></li>
+          <li className=" hover:text-blue-700"> <Link to="/grocery">Grocery</Link></li>
 
-          <li className="nav-item">Cart</li>
+          <li className=" hover:text-blue-700">Cart</li>
           <li>
             Online Status:{OnlineStatus ?"🟢":"🔴" }
           </li>
           <button
-            className="login"
+            className="ml-2 h-[34px] w-[100px] rounded-md bg-gray-200 hover:bg-gray-400 hover:text-white"
             onClick={() => {
 
               btnNameReact === "Login" ? setBtnNameReact("Logout") :  setBtnNameReact("Login");
