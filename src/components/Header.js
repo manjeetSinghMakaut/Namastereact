@@ -15,12 +15,13 @@ const Header = () => {
   },[btnNameReact])
 
   return (
-    <div className="flex justify-between border border-black items-center h-[100px] overflow-hidden font-serif"> 
+    <header className="sticky top-0 bg-white shadow-md z-50">
+    <div className="flex justify-between  border border-black items-center h-[100px] overflow-hidden font-serif"> 
       <div className="w-[150px] h-[110px] overflow-hidden">
         <img className="w-full h-full object-contain cursor-pointer" src={LOGO_URL} />
       </div>
       <div className="p-x-5 flex items-center">
-        <ul className="flex p-3 m-4 gap-7">
+        <ul className="flex px-3 m-4 gap-7">
           
           <li className=" hover:text-blue-700"><Link to={"/"}>Home</Link></li>
           <li className=" hover:text-blue-700"><Link to="/about">About</Link></li>
@@ -44,6 +45,7 @@ const Header = () => {
         </ul>
       </div>
     </div>
+    </header>
   );
 };
 
