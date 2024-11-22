@@ -1,11 +1,17 @@
+import { React, useState } from "react";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import useBodyCards from "../utils/useBodyCards.js";
+import { flattenObject } from "../utils/useFlatten.js";
 import OfflineComponent from "./OfflineComponent.js";
+import { CDN_LINK } from "../utils/constants.js";
+
 const Body = () => {
   //  - super powerful variable
+
+
 
   const BodyCards = useBodyCards();
 
@@ -17,16 +23,18 @@ const Body = () => {
     setSearchText,
   } = BodyCards;
 
-  console.log(filteredRestaurant);
   const OnlineStatus = useOnlineStatus();
 
-  if (OnlineStatus === false)
-    return <OfflineComponent/>
+  if (OnlineStatus === false) return <OfflineComponent />;
 
-  // conditional rendering -this will be shown until our api not responded
+  const shimmerCount =
+    filteredRestaurant.length > 0 ? filteredRestaurant.length : 8;
 
-  return listOfResturants.length === 0 ? (
-    <Shimmer />
+console.log(filteredRestaurant);
+
+
+  return filteredRestaurant.length === 0 ? (
+    <Shimmer count={shimmerCount} />
   ) : (
     <div className="body">
       <div className="flex items-center m-4">
@@ -59,7 +67,7 @@ const Body = () => {
             onClick={() => {
               //filter logic here
               const filteredList = listOfResturants.filter(
-                (res) => res.info.avgRatingString > 4
+                (res) => res.info.avgRatingString > 4.3
               );
               setFilteredRestaurant(filteredList);
             }}
@@ -70,14 +78,18 @@ const Body = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 p-4">
-        {filteredRestaurant.map((restaurant) => (
-          <Link
-            key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
-          >
-            <ResturantCard resdata={restaurant} />
-          </Link>
-        ))}
+        {filteredRestaurant.map((restaurant) => {
+          const flattenedData = flattenObject(restaurant.info);
+          const imageUrl = `${CDN_LINK}${flattenedData.cloudinaryImageId}`;
+          return (
+            <Link
+              key={flattenedData.id}
+              to={`/restaurants/${flattenedData.id}`}
+            >
+              <ResturantCard resdata={{ ...flattenedData, image: imageUrl }} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

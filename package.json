@@ -1,7 +1,7 @@
 {
   "name": "namastereact",
   "version": "1.0.0",
-  "description": "this is  namaste react by manjeet",
+  "description": "this is namaste react by manjeet",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -20,10 +20,11 @@
   "homepage": "https://github.com/manjeetSinghMakaut/Namastereact#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
-    "parcel": "^2.12.0",
+    "buffer": "^6.0.3",
+    "parcel": "^2.13.0",
     "postcss": "^8.4.49",
     "process": "^0.11.10",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.15"
   },
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "^2.12.0",
