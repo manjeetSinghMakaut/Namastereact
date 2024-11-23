@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
@@ -8,9 +8,18 @@ import { flattenObject } from "../utils/useFlatten.js";
 import OfflineComponent from "./OfflineComponent.js";
 import { CDN_LINK } from "../utils/constants.js";
 
-const Body = () => {
-  //  - super powerful variable
 
+// {this is an hoc which is taking the normal
+// resturant card and make enhance it with new
+import {withpromoted} from "./RestaurantCard"
+// lable the akshay has this promoted in api but i dont }
+
+
+
+const Body = () => {
+
+// here we are passing the restaurant to the hoc to enhance it if it is true and the new component will get stored in this Resturantcardpromoted
+ // const Resturantcardpromoted= withpromoted(ResturantCard)
 
 
   const BodyCards = useBodyCards();
@@ -86,6 +95,8 @@ console.log(filteredRestaurant);
               key={flattenedData.id}
               to={`/restaurants/${flattenedData.id}`}
             >
+              {/* //this is showing that after checking that if promoted is true then render first else second */}
+              {/* {flattenedData.data.promoted ? < Resturantcardpromoted  resdata={{ ...flattenedData, image: imageUrl }/> : <ResturantCard resdata={{ ...flattenedData, image: imageUrl }} } */}
               <ResturantCard resdata={{ ...flattenedData, image: imageUrl }} />
             </Link>
           );

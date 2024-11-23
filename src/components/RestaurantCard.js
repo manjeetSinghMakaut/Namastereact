@@ -29,4 +29,20 @@ const cuisines = Object.keys(resdata)
   );
 };
 
+
+// higher order component
+// input - restaurantcard ==> restuarantcardpromotes
+
+ export const withpromoted =(ResturantCard)=>{
+  return (prop) =>{
+    return (
+      <div>
+        <label>promoted</label>
+        <ResturantCard {...prop}/>
+
+      </div>
+    )
+  }
+};
+
 export default ResturantCard;
