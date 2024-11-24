@@ -14,7 +14,7 @@ const cuisines = Object.keys(resdata)
 .filter((key) => key.startsWith("cuisines."))
 .map((key) => resdata[key]);
   return (
-    <div className="h-[470px] w-[210px] p-[10px] cursor-pointer transition-transform ease-in-out duration-300 bg-[#e7dede] m-[10px] rounded-[10px] hover:-translate-y-2 hover:shadow-[10px_30px_27px_-5px_rgba(50,50,93,0.25)]">
+    <div className="h-[490px] w-[210px] p-[10px] cursor-pointer transition-transform ease-in-out duration-300 bg-[#e7dede] m-[10px] rounded-[10px] hover:-translate-y-2 hover:shadow-[10px_30px_27px_-5px_rgba(50,50,93,0.25)]">
       <img
         className="w-[190px] h-[250px] rounded-md"
         src={cloudinaryImageId ? `${CDN_LINK}${cloudinaryImageId}` : ""}
@@ -33,16 +33,16 @@ const cuisines = Object.keys(resdata)
 // higher order component
 // input - restaurantcard ==> restuarantcardpromotes
 
- export const withpromoted =(ResturantCard)=>{
-  return (prop) =>{
-    return (
-      <div>
-        <label>promoted</label>
-        <ResturantCard {...prop}/>
+//  export const withpromoted =(ResturantCard)=>{
+//   return (prop) =>{
+//     return (
+//       <div>
+//         <label>promoted</label>
+//         <ResturantCard {...prop}/>
 
-      </div>
-    )
-  }
-};
+//       </div>
+//     )
+//   }
+// };
 
 export default ResturantCard;

@@ -81,7 +81,7 @@ console.log(filteredRestaurant);
               setFilteredRestaurant(filteredList);
             }}
           >
-            Top Rated Resturant
+            Top Rated Resturant  
           </button>
         </div>
       </div>
