@@ -17,7 +17,7 @@ const cuisines = Object.keys(resdata)
     <div className="h-[490px] w-[210px] p-[10px] cursor-pointer transition-transform ease-in-out duration-300 bg-[#e7dede] m-[10px] rounded-[10px] hover:-translate-y-2 hover:shadow-[10px_30px_27px_-5px_rgba(50,50,93,0.25)]">
       <img
         className="w-[190px] h-[250px] rounded-md"
-        src={cloudinaryImageId ? `${CDN_LINK}${cloudinaryImageId}` : ""}
+        src={`${CDN_LINK}${cloudinaryImageId}`}
         alt={name}
       />
       <h3 className="font-bold py-3 ">{name}</h3>

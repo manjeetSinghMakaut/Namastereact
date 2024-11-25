@@ -1,7 +1,7 @@
 import { CDN_LINK } from "../utils/constants";
 
 const Itemlist = ({ items }) => {
-  console.log(items);
+ 
 
   return (
     <div>

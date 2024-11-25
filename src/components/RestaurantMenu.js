@@ -9,6 +9,10 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
 
+
+
+
+
   const {
     name,
     avgRatingString,
@@ -16,6 +20,10 @@ const RestaurantMenu = () => {
     areaName,
     sla: { slaString },
   } = resInfo?.cards[2]?.card?.card?.info;
+
+
+
+  console.log(resInfo);
 
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(

@@ -14,7 +14,6 @@ const useRestrauntMenu = (resId) => {
 
     setResInfo(json.data);
 
-    console.log(json.data);
   };
 
   return resInfo;
