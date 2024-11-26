@@ -1,7 +1,6 @@
 import React from "react";
-import User from "./User.js";
 import UserClass from "./UserClass.js";
-
+import UserContext from "../utils/UserContext.js";
 // CLASS BASED OOMPONENT
 class About extends React.Component {
   constructor(props) {
@@ -17,7 +16,13 @@ class About extends React.Component {
 
     return (
       <div>
-        <h1>ABOUT CLASS </h1>
+        <div>
+          logged In User 
+          <UserContext.Consumer>
+            {({loggedInUser})=> <h1 className="font-bold">{ loggedInUser}</h1>
+            }
+          </UserContext.Consumer>
+        </div>
         <UserClass />
       </div>
     );

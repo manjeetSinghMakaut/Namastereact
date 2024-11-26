@@ -1,5 +1,5 @@
+import { useContext } from "react";
 import { CDN_LINK } from "../utils/constants";
-
 const ResturantCard = ({ resdata }) => {
   // Destructure flattened properties and provide default values
   const {
@@ -9,6 +9,10 @@ const ResturantCard = ({ resdata }) => {
     costForTwo,
     "sla.slaString": slaString = "N/A",
   } = resdata;
+
+
+
+
 
 const cuisines = Object.keys(resdata)
 .filter((key) => key.startsWith("cuisines."))

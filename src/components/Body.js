@@ -39,7 +39,7 @@ const Body = () => {
   const shimmerCount =
     filteredRestaurant.length > 0 ? filteredRestaurant.length : 8;
 
-console.log(filteredRestaurant);
+// console.log(filteredRestaurant);
 
 
   return filteredRestaurant.length === 0 ? (

@@ -2,16 +2,18 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestrauntMenu from "../utils/useRestrauntMenu.js";
 import RestaurantCategory from "./RestaurantCategory.js";
+import { useState } from "react";
+
 const RestaurantMenu = () => {
   const { resId } = useParams();
+
+  const [showIndex, setshowIndex] = useState(null);
+  const dummy= "dummy data"
+
 
   const resInfo = useRestrauntMenu(resId); // PICKING UP THE DATA THEN USING BY DESTRUCTURING....
 
   if (resInfo === null) return <Shimmer />;
-
-
-
-
 
   const {
     name,
@@ -20,8 +22,6 @@ const RestaurantMenu = () => {
     areaName,
     sla: { slaString },
   } = resInfo?.cards[2]?.card?.card?.info;
-
-
 
   console.log(resInfo);
 
@@ -45,8 +45,17 @@ const RestaurantMenu = () => {
       </div>
 
       {/* categories accordians */}
-      {categories.map((category) => (
-        <RestaurantCategory key={category.card.card.title} data={category.card.card} />
+      {categories.map((category, index) => (
+        // controlled component
+        <RestaurantCategory
+          key={category.card.card.title}
+          data={category.card.card}
+          showItems={index === showIndex ? true : false}
+          setshowIndex={() => setshowIndex(index === showIndex ? null : index)}
+          index={index}
+          dummy={dummy}
+        
+        />
       ))}
     </div>
   );
