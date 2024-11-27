@@ -1,9 +1,8 @@
 import { CDN_LINK } from "../utils/constants";
 
-const Itemlist = ({ items ,dummy}) => {
-
+const Itemlist = ({ items, dummy }) => {
   console.log(dummy);
-  
+
   return (
     <div>
       {items.map((item) => (
@@ -16,7 +15,10 @@ const Itemlist = ({ items ,dummy}) => {
             <div className="flex flex-col p-2">
               <span className="font-bold">{item.card.info.name}</span>
               <span className="text-gray-600">
-                {"₹" + item.card.info.price / 100}
+                {"₹" +
+                  (item.card.info.price
+                    ? item.card.info.price / 100
+                    : item.card.info.defaultPrice / 100)}
               </span>
             </div>
             <p className="text-sm text-gray-500">
@@ -37,11 +39,9 @@ const Itemlist = ({ items ,dummy}) => {
                 ADD
               </button>
             </div>
-           
           </div>
         </div>
       ))}
-      
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useContext } from "react";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
@@ -7,21 +7,17 @@ import useBodyCards from "../utils/useBodyCards.js";
 import { flattenObject } from "../utils/useFlatten.js";
 import OfflineComponent from "./OfflineComponent.js";
 import { CDN_LINK } from "../utils/constants.js";
-
-
+import { useContext } from "react";
+import UserContext from "../utils/UserContext.js";
 // {this is an hoc which is taking the normal
 // resturant card and make enhance it with new
-import {withpromoted} from "./RestaurantCard"
+// import { withpromoted } from "./RestaurantCard";
+
 // lable the akshay has this promoted in api but i dont }
 
-
-
 const Body = () => {
-
-// here we are passing the restaurant to the hoc to enhance it if it is true and the new component will get stored in this Resturantcardpromoted
- // const Resturantcardpromoted= withpromoted(ResturantCard)
-
-
+  // here we are passing the restaurant to the hoc to enhance it if it is true and the new component will get stored in this Resturantcardpromoted
+  // const Resturantcardpromoted= withpromoted(ResturantCard)
   const BodyCards = useBodyCards();
 
   const {
@@ -39,7 +35,9 @@ const Body = () => {
   const shimmerCount =
     filteredRestaurant.length > 0 ? filteredRestaurant.length : 8;
 
-// console.log(filteredRestaurant);
+  // console.log(filteredRestaurant);
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
 
   return filteredRestaurant.length === 0 ? (
@@ -81,8 +79,16 @@ const Body = () => {
               setFilteredRestaurant(filteredList);
             }}
           >
-            Top Rated Resturant  
+            Top Rated Resturant
           </button>
+        </div>
+        <div className="ml-3">
+          <lable>UserName : </lable>
+          <input
+            className="h-[40px] p-2 border-2 border-black rounded-md focus:outline-none caret-black ml-3"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
 

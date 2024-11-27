@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ContactUs from "./components/ContactUs.js";
 import Error from "./components/Error.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
-
+import UserContext from "./utils/UserContext.js";
 // chunking
 // code splitting
 //dynamic bundling
@@ -18,11 +18,29 @@ const Grocery = lazy(() => import("./components/Grocery.js"));
 const About = lazy(() => import("./components/About.js"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState(""); // Initialize as a string
+
+  //authentication
+
+  useEffect(() => {
+    // make an api call send username and password
+
+    const data = {
+      name: "manjeet singh"
+    };
+    setUserName(data.name);
+
+    
+  }, []);
+  console.log(userName);
+  
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
@@ -39,8 +57,8 @@ const appRouter = createBrowserRouter([
         path: "/about",
         element: (
           <Suspense fallback={<h1>About Loading...</h1>}>
-          <About/>
-        </Suspense>
+            <About />
+          </Suspense>
         ),
       },
       {

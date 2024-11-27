@@ -23,7 +23,7 @@ const RestaurantMenu = () => {
     sla: { slaString },
   } = resInfo?.cards[2]?.card?.card?.info;
 
-  console.log(resInfo);
+  // console.log(resInfo);
 
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -31,6 +31,10 @@ const RestaurantMenu = () => {
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
+ 
+
+    
+
 
   return (
     <div className="flex flex-col items-center justify-center text-center py-4">

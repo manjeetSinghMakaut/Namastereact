@@ -7,11 +7,12 @@ const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const OnlineStatus = useOnlineStatus();
 
-  const loggedInUser = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     //  console.log("useeffect called");
   }, [btnNameReact]);
+  
 
   return (
     <header className="sticky top-0 bg-white shadow-md z-50">
@@ -51,7 +52,7 @@ const Header = () => {
             >
               {btnNameReact}
             </button>
-            <li className=" font-bold">{loggedInUser.loggedInUser}</li>
+            <li className=" font-bold">{loggedInUser}</li>
           </ul>
         </div>
       </div>
