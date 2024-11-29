@@ -7,6 +7,9 @@ import ContactUs from "./components/ContactUs.js";
 import Error from "./components/Error.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
 import UserContext from "./utils/UserContext.js";
+import { Provider } from "react-redux"; // act as a  bridge for redux store
+import appStore from "./utils/appStore.js";
+
 // chunking
 // code splitting
 //dynamic bundling
@@ -26,21 +29,20 @@ const AppLayout = () => {
     // make an api call send username and password
 
     const data = {
-      name: "manjeet singh"
+      name: "manjeet singh",
     };
     setUserName(data.name);
-
-    
   }, []);
-  console.log(userName);
-  
+
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div className="app">
         <Header />
         <Outlet />
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
