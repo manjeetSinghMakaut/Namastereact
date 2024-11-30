@@ -8,7 +8,8 @@ const cartSlice = createSlice({
     reducers:{
         addItem: (state,action)=>{
             state.items.push(action.payload)
-        },
+            // mutating the state here 
+         },
         deleteItem: (state,action)=>{
             state.items.pop()
         },
@@ -24,4 +25,4 @@ const cartSlice = createSlice({
 
  export{addItem,deleteItem,clearCart};
 
-export default cartSlice.reducer
+export default cartSlice.reducer 

@@ -9,7 +9,7 @@ import RestaurantMenu from "./components/RestaurantMenu.js";
 import UserContext from "./utils/UserContext.js";
 import { Provider } from "react-redux"; // act as a  bridge for redux store
 import appStore from "./utils/appStore.js";
-
+import Cart from "./components/Cart.js";
 // chunking
 // code splitting
 //dynamic bundling
@@ -58,7 +58,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<h1>About Loading...</h1>}>
+           <Suspense fallback={<h1>About Loading...</h1>}>
             <About />
           </Suspense>
         ),
@@ -78,6 +78,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

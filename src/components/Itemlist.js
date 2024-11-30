@@ -1,7 +1,19 @@
+import { useDispatch } from "react-redux";
 import { CDN_LINK } from "../utils/constants";
-
+import { addItem } from "../utils/cartSlice";
 const Itemlist = ({ items, dummy }) => {
-  console.log(dummy);
+
+
+
+
+  const dispatch = useDispatch();
+
+  const handleadditem = (item) => {
+    // dispatch an action
+    dispatch(addItem(item));
+  };
+   
+
 
   return (
     <div>
@@ -35,7 +47,10 @@ const Itemlist = ({ items, dummy }) => {
             />
             {/* Overlapping Button */}
             <div className="absolute bottom-0 right-2 ">
-              <button className=" bg-white  p-3 h-10 w-28 border-2 border-black-400 text-green-600  font-bold px-3 py-1 rounded-lg shadow-md cursor-pointer">
+              <button
+                className=" bg-white  p-3 h-10 w-28 border-2 border-black-400 text-green-600  font-bold px-3 py-1 rounded-lg shadow-md cursor-pointer"
+                onClick={()=>handleadditem(item)} 
+              >
                 ADD
               </button>
             </div>

@@ -83,7 +83,7 @@ const Body = () => {
           </button>
         </div>
         <div className="ml-3">
-          <lable>UserName : </lable>
+          <label>UserName : </label>
           <input
             className="h-[40px] p-2 border-2 border-black rounded-md focus:outline-none caret-black ml-3"
             value={loggedInUser}

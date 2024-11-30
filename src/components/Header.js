@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const OnlineStatus = useOnlineStatus();
@@ -13,6 +15,11 @@ const Header = () => {
     //  console.log("useeffect called");
   }, [btnNameReact]);
   
+// subscribing to the store using our selector
+
+ const cartItems = useSelector((store)=>store.cart.items);
+ console.log(cartItems);
+ 
 
   return (
     <header className="sticky top-0 bg-white shadow-md z-50">
@@ -39,8 +46,10 @@ const Header = () => {
               {" "}
               <Link to="/grocery">Grocery</Link>
             </li>
-
-            <li className=" hover:text-blue-700">Cart</li>
+            <li className=" hover:text-blue-700 font-bold">
+              {" "}
+              <Link to="/cart">(Cart {cartItems.length} -Items)</Link>
+            </li>
             <li>Online Status:{OnlineStatus ? "🟢" : "🔴"}</li>
             <button
               className="ml-2 h-[34px] w-[100px] rounded-md bg-gray-200 hover:bg-gray-400 hover:text-white"
@@ -57,6 +66,8 @@ const Header = () => {
         </div>
       </div>
     </header>
+
+
   );
 };
 
