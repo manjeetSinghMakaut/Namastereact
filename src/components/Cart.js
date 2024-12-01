@@ -17,7 +17,7 @@ const Cart = () => {
 
   return (
     <div className="text-center m-4 p-4 ">
-      <h1 className="text-xl font-bold mb-8">CART</h1>
+      <h1 className="text-xl font-bold mb-2">CART</h1>
       <div className="w-6/12 m-auto">
         <button
           className="w-[110px] h-[40px] text-white rounded-lg font-bold bg-orange-500"
