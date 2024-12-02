@@ -18,7 +18,6 @@ const Header = () => {
 // subscribing to the store using our selector
 
  const cartItems = useSelector((store)=>store.cart.items);
- console.log(cartItems);
  
 
   return (

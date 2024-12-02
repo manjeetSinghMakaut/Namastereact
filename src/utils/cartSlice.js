@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
     name: "cart",
@@ -7,6 +7,7 @@ const cartSlice = createSlice({
     },
     reducers:{
         addItem: (state,action)=>{
+            //Redux uses Immer.js behind the Scene
             state.items.push(action.payload)
             // mutating the state here 
          },
@@ -14,7 +15,11 @@ const cartSlice = createSlice({
             state.items.pop()
         },
         clearCart: (state,action)=>{
-            state.items.length=0; //[]
+            state.items.length=0; //state=[]
+            // RTK = either Mutate the state or return the new State
+           // state= ["manjeet"] this will not work
+           // console.log(current(state)); To see the log in redux
+           
         },
     },
  
