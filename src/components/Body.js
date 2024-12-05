@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext, useEffect } from "react";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ import OfflineComponent from "./OfflineComponent.js";
 import { CDN_LINK } from "../utils/constants.js";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext.js";
+
+
 // {this is an hoc which is taking the normal
 // resturant card and make enhance it with new
 // import { withpromoted } from "./RestaurantCard";
@@ -19,6 +21,8 @@ const Body = () => {
   // here we are passing the restaurant to the hoc to enhance it if it is true and the new component will get stored in this Resturantcardpromoted
   // const Resturantcardpromoted= withpromoted(ResturantCard)
   const BodyCards = useBodyCards();
+
+
 
   const {
     listOfResturants,
@@ -39,6 +43,14 @@ const Body = () => {
 
   const { loggedInUser, setUserName } = useContext(UserContext);
 
+
+  useEffect(() => {
+    if (loggedInUser) {
+      console.log("Saving to localStorage:", loggedInUser);
+      localStorage.setItem("loggedInUser", loggedInUser);
+    }
+  }, [loggedInUser]);
+  
 
   return filteredRestaurant.length === 0 ? (
     <Shimmer count={shimmerCount} />

@@ -30,7 +30,17 @@
 - dispatch action
 - selector
   
+# Types of testing (developer)
+ - unit testing *
+ - integration Testing  *
+ - end to end testing || e2e Testing 
 
+# Setting up testing in our app
+- install react testing libarary
+- installed jest
+- installed Babel dependencies
+- configure Babel 
+- configure parcel file to disable default babel transpilation
 
 
   
