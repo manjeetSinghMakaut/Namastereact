@@ -46,7 +46,6 @@ const Body = () => {
 
   useEffect(() => {
     if (loggedInUser) {
-      console.log("Saving to localStorage:", loggedInUser);
       localStorage.setItem("loggedInUser", loggedInUser);
     }
   }, [loggedInUser]);

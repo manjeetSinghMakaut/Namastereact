@@ -8,8 +8,7 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const [showIndex, setshowIndex] = useState(null);
-  const dummy= "dummy data"
-
+  const dummy = "dummy data";
 
   const resInfo = useRestrauntMenu(resId); // PICKING UP THE DATA THEN USING BY DESTRUCTURING....
 
@@ -31,10 +30,6 @@ const RestaurantMenu = () => {
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
- 
-
-    
-
 
   return (
     <div className="flex flex-col items-center justify-center text-center py-4">
@@ -58,7 +53,6 @@ const RestaurantMenu = () => {
           setshowIndex={() => setshowIndex(index === showIndex ? null : index)}
           index={index}
           dummy={dummy}
-        
         />
       ))}
     </div>

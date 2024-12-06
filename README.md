@@ -41,7 +41,9 @@
 - installed Babel dependencies
 - configure Babel 
 - configure parcel file to disable default babel transpilation
-
-
-  
-
+- jest npx jest --init
+- jest-environment-jsdom package now must be installed separately
+- install jsdon library
+- installed  @babel/preset-react // make to jxs work in testcases
+- include  @babel/preset-react inside my babel cofig  
+- include @testing.library/jest-dom
