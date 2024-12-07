@@ -1,7 +1,12 @@
 import { useContext } from "react";
 import { CDN_LINK } from "../utils/constants";
-const ResturantCard = ({ resdata }) => {
+const ResturantCard = (props) => {
   // Destructure flattened properties and provide default values
+
+   const { resdata } =props;
+   
+   
+
   const {
     cloudinaryImageId,
     name,
@@ -10,13 +15,14 @@ const ResturantCard = ({ resdata }) => {
     "sla.slaString": slaString = "N/A",
   } = resdata;
 
-
+  
 
 
 
 const cuisines = Object.keys(resdata)
 .filter((key) => key.startsWith("cuisines."))
 .map((key) => resdata[key]);
+
   return (
     <div className="h-[490px] w-[210px] p-[10px] cursor-pointer transition-transform ease-in-out duration-300 bg-[#e7dede] m-[10px] rounded-[10px] hover:-translate-y-2 hover:shadow-[10px_30px_27px_-5px_rgba(50,50,93,0.25)]">
       <img

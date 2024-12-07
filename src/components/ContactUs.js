@@ -6,8 +6,6 @@ function ContactUs() {
       <h1 className="font-bold text-2xl p-4 mb-8">This is ContactUs</h1>
 
       <form className="w-full max-w-md p-4 border-2 border-gray-300 rounded-md shadow-md bg-white">
-     
-
         <div className="mb-4">
           <label
             className="block text-sm font-medium text-gray-700 mb-1"

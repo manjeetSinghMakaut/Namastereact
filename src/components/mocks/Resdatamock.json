@@ -1,0 +1,10 @@
+{
+    "cloudinaryImageId": "sample-image-id",
+    "name": "Sample Restaurant",
+    "avgRatingString": "4.5",
+    "costForTwo": "₹200 for two",
+    "sla.slaString": "30 mins",
+    "cuisines.italian": "Italian",
+    "cuisines.indian": "Indian"
+  }
+  
