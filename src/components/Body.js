@@ -30,6 +30,7 @@ const Body = () => {
     searchText,
     setFilteredRestaurant,
     setSearchText,
+    error,
   } = BodyCards;
 
   const OnlineStatus = useOnlineStatus();
