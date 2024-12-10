@@ -1,4 +1,4 @@
-import { React, useContext, useEffect } from "react";
+import { React, useEffect } from "react";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
